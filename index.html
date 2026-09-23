@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="중요도와 긴급도에 따라 할 일을 정리하는 아이젠하워 매트릭스"
+    />
+    <title>할일 아이젠하워 매트릭스</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <p class="eyebrow">TASK PRIORITIZATION</p>
+        <h1>할일 아이젠하워 매트릭스</h1>
+        <p class="hero-copy">
+          할 일을 <strong>중요도</strong>와 <strong>긴급도</strong>로 나누어 지금 무엇에 집중할지 정리해 보세요.
+        </p>
+      </header>
+
+      <section class="add-card" aria-labelledby="add-task-title">
+        <div>
+          <p class="section-label">새 할 일</p>
+          <h2 id="add-task-title">우선순위를 정해 보세요</h2>
+        </div>
+
+        <form id="task-form" novalidate>
+          <label class="field task-field" for="task-title">
+            <span>할 일</span>
+            <input id="task-title" name="task-title" type="text" maxlength="80" placeholder="예: 발표 자료 초안 작성" autocomplete="off" />
+          </label>
+
+          <label class="field" for="importance">
+            <span>중요도</span>
+            <select id="importance" name="importance">
+              <option value="important">중요해요</option>
+              <option value="not-important">중요하지 않아요</option>
+            </select>
+          </label>
+
+          <label class="field" for="urgency">
+            <span>긴급도</span>
+            <select id="urgency" name="urgency">
+              <option value="urgent">긴급해요</option>
+              <option value="not-urgent">긴급하지 않아요</option>
+            </select>
+          </label>
+
+          <button class="primary-button" type="submit">할 일 추가</button>
+        </form>
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="concept-card" aria-label="수업 개념 활용 안내">
+        <span>함수</span><span>조건문</span><span>반복문</span><span>리스트·딕셔너리</span>
+        <p>입력 → 분류 → 목록 표시의 순서로 Python 기초에서 배운 개념을 적용했습니다.</p>
+      </section>
+
+      <section class="matrix-section" aria-labelledby="matrix-title">
+        <div class="matrix-heading">
+          <div>
+            <p class="section-label">나의 우선순위</p>
+            <h2 id="matrix-title">아이젠하워 매트릭스</h2>
+          </div>
+          <p id="task-count" class="task-count">등록된 할 일 0개</p>
+        </div>
+
+        <div class="matrix" id="matrix">
+          <article class="quadrant quadrant-do" data-quadrant="do">
+            <div class="quadrant-header">
+              <span class="quadrant-number">01</span>
+              <div>
+                <h3>즉시 실행</h3>
+                <p>중요하고 긴급한 일</p>
+              </div>
+            </div>
+            <ul id="do-list" class="task-list" aria-label="즉시 실행 목록"></ul>
+          </article>
+
+          <article class="quadrant quadrant-plan" data-quadrant="plan">
+            <div class="quadrant-header">
+              <span class="quadrant-number">02</span>
+              <div>
+                <h3>일정 잡기</h3>
+                <p>중요하지만 긴급하지 않은 일</p>
+              </div>
+            </div>
+            <ul id="plan-list" class="task-list" aria-label="일정 잡기 목록"></ul>
+          </article>
+
+          <article class="quadrant quadrant-delegate" data-quadrant="delegate">
+            <div class="quadrant-header">
+              <span class="quadrant-number">03</span>
+              <div>
+                <h3>위임하기</h3>
+                <p>긴급하지만 중요하지 않은 일</p>
+              </div>
+            </div>
+            <ul id="delegate-list" class="task-list" aria-label="위임하기 목록"></ul>
+          </article>
+
+          <article class="quadrant quadrant-later" data-quadrant="later">
+            <div class="quadrant-header">
+              <span class="quadrant-number">04</span>
+              <div>
+                <h3>나중에 하기</h3>
+                <p>중요하지도 긴급하지도 않은 일</p>
+              </div>
+            </div>
+            <ul id="later-list" class="task-list" aria-label="나중에 하기 목록"></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="guide-card" aria-labelledby="guide-title">
+        <div>
+          <p class="section-label">분류 기준</p>
+          <h2 id="guide-title">중요함과 긴급함은 다릅니다</h2>
+        </div>
+        <ul>
+          <li><strong>중요함</strong>: 나의 목표나 책임에 큰 영향을 주는 일</li>
+          <li><strong>긴급함</strong>: 마감이 임박했거나 바로 대응해야 하는 일</li>
+        </ul>
+      </section>
+    </main>
+
+    <template id="task-template">
+      <li class="task-item">
+        <label class="task-check">
+          <input class="complete-checkbox" type="checkbox" />
+          <span class="task-text"></span>
+        </label>
+        <button class="delete-button" type="button" aria-label="할 일 삭제">삭제</button>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
